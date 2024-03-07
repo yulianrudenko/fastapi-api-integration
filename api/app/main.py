@@ -115,6 +115,9 @@ async def process_data(
     data_to_process: schemas.DataToProcess = Body(description="Data to process"),
     user_obj: models.User = Depends(get_current_user)
 ) -> list[schemas.TextResponse] | list[schemas.ImageResponse] | None:
+    """
+    Process text or image (based on request body) using 3rd party API/modules
+    """
     text = data_to_process.text
     if text is not None:
         tasks = []
